@@ -1,0 +1,33 @@
+.header {
+    background: #FFFFFF;
+    border-bottom: 1px solid #E0DFDE;
+}
+
+.header__inner {
+    max-width: 1512px;
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    text-align: center;
+    color: #8B7969;
+    text-decoration: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+}
+
+.header-nav__button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #D9C6B5;
+    color: #8B7969;
+    cursor: pointer;
+    border: 1px solid #8B7969;
+    border-radius: 4px;
+}

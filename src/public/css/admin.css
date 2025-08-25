@@ -1,0 +1,116 @@
+body {
+    font-family: sans-serif;
+    background: #f8f6f5;
+}
+
+.admin-container {
+    background: #fff;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px 30px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout {
+    color: #d1c0af;
+    text-decoration: none;
+    border: 1px solid #d1c0af;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.2rem;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.search-form input,
+.search-form select {
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.search-btn {
+    background: #bba48a;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.reset-btn {
+    background: #e0d4c6;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.export-btn {
+    background: #e0d4c6;
+    border: none;
+    padding: 6px 12px;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.admin-table th {
+    background: #a68b6e;
+    color: #fff;
+    text-align: left;
+    padding: 8px;
+}
+
+.admin-table td {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+}
+
+.detail-btn {
+    background: #f8f6f5;
+    border: 1px solid #ddd;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+}
+
+.pagination button {
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 4px 8px;
+}
+
+.pagination .active {
+    background: #a68b6e;
+    color: #fff;
+}
