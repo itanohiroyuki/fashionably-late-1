@@ -1,5 +1,10 @@
 @extends('layouts.app')
-
+<style>
+    svg.w-5.h-5 {
+        width: 30px;
+        height: 30px;
+    }
+</style>
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 @endsection
@@ -8,55 +13,63 @@
     <h2>Admin</h2>
 
     <!-- 検索フォーム -->
-    <form class="search-form">
-        <input type="text" placeholder="名前やメールアドレスを入力してください">
-        <select>
-            <option>性別</option>
-        </select>
-        <select>
-            <option>お問い合わせの種類</option>
-        </select>
-        <select>
-            <option>年/月/日</option>
-        </select>
-        <button type="submit" class="search-btn">検索</button>
-        <button type="reset" class="reset-btn">リセット</button>
-    </form>
+    <div class="search">
+        <form class="search-form" action="/admin/search" method="get">
+            <div class="search-form__item">
 
-    <!-- エクスポートボタン -->
-    <button class="export-btn">エクスポート</button>
+                <input class="search-form__item-keyword" type="text" name="keyword" value="{{ request('keyword') }}"
+                    placeholder="名前やメールアドレスを入力してください">
 
-    <!-- テーブル -->
-    <table class="admin-table">
-        <thead>
-            <tr>
-                <th>お名前</th>
-                <th>性別</th>
-                <th>メールアドレス</th>
-                <th>お問い合わせの種類</th>
-                <th></th>
+                <select class="search-form__item-gender" name="gender">
+                    <option value="">性別</option>
+                    <option value="1" @if (request('gender') == 1) selected @endif>男性</option>
+                    <option value="2" @if (request('gender') == 2) selected @endif>女性</option>
+                    <option value="3" @if (request('gender') == 3) selected @endif>その他</option>
+                </select>
+                <select class="search-form__item-category" name="category_id">
+                    <option value="">お問い合わせの種類</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category['id'] }}" @if (request('category_id') == $category->id) selected @endif>
+                            {{ $category['content'] }}</option>
+                    @endforeach
+                </select>
+                <input class="search-form__item-date" type="date" name="date" value="{{ request('date') }}">
+                <button class="search-btn" type="submit">検索</button>
+                <a class="reset-btn" href="/admin">リセット
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <div class="buttons">
+        <div class="export-btn">
+            <button class="export">エクスポート</button>
+        </div>
+        <div class="pagination">
+            {{ $contacts->links() }}
+        </div>
+    </div>
+
+    <div class="contacts">
+        <table class="contacts__table">
+            <tr class="table-heading">
+                <th class="column">お名前</th>
+                <th class="column">性別</th>
+                <th class="column">メールアドレス</th>
+                <th class="column">お問い合わせの種類</th>
             </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>山田 太郎</td>
-                <td>男性</td>
-                <td>test@example.com</td>
-                <td>商品の交換について</td>
-                <td><button class="detail-btn">詳細</button></td>
-            </tr>
-            <!-- 他の行も同じ -->
-        </tbody>
-    </table>
-
-    <!-- ページネーション -->
-    <div class="pagination">
-        <button>&lt;</button>
-        <button class="active">1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>5</button>
-        <button>&gt;</button>
+            @foreach ($contacts as $contact)
+                <tr class="table-data">
+                    <td class="name">{{ $contact['last_name'] }} {{ $contact['first_name'] }}
+                    </td>
+                    <td class="gender">{{ $contact['gender_text'] }}</td>
+                    <td class="email">{{ $contact['email'] }}</td>
+                    <td class="category">{{ $contact['category_content'] }}</td>
+                    <td class="detail">
+                        <button class="detail-btn" wire:click="showModal" type="button">詳細</button>
+                    </td>
+                </tr>
+            @endforeach
+        </table>
     </div>
 @endsection

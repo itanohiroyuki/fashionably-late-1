@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
     @yield('css')
+    @livewireStyles
 </head>
 
 <body>
@@ -38,6 +39,9 @@
     <main>
         @yield('content')
     </main>
+    <livewire:modal />
+    @livewireScripts
 </body>
+
 
 </html>
